@@ -17,9 +17,3 @@ class AdvertisementViewSet(ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(creator=self.request.user)
-
-    def get_permissions(self):
-        """Получение прав для действий."""
-        if self.action in ["create", "update", "partial_update"]:
-            return [IsAuthenticated()]
-        return []
